@@ -153,8 +153,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </div>
 </div>
-    <!-- jQuery-2.2.4 js -->
-    <script src="{{asset('frontend')}}/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- jQuery-2.2.4 js
+    <script src="{{asset('frontend')}}/js/jquery/jquery-2.2.4.min.js"></script>-->
     <!-- Popper js -->
     <script src="{{asset('frontend')}}/js/bootstrap/popper.min.js"></script>
     <!-- Bootstrap-4 js -->

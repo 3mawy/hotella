@@ -2,11 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <!-- Title -->
     <title>Dorne - Directory &amp; Listing Template</title>
@@ -23,6 +25,10 @@
 </head>
 
 <body>
+
+
+
+
     <!-- Preloader -->
     <div id="preloader">
         <div class="dorne-load"></div>
@@ -37,7 +43,7 @@
                         <i class="pe-7s-close-circle" aria-hidden="true"></i>
                     </div>
                     <form action="#" method="get">
-                        <input type="search" name="caviarSearch" id="search" placeholder="Search Your Desire Destinations or Events">
+                        <input type="" name="caviarSearch" id="" placeholder="Search Your Desire Destinations or Events">
                         <input type="submit" class="d-none" value="submit">
                     </form>
                 </div>
@@ -736,8 +742,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </footer>
     <!-- ****** Footer Area End ****** -->
 
-    <!-- jQuery-2.2.4 js -->
-    <script src="{{asset('frontend')}}/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- jQuery-2.2.4 js
+    <script src="{{asset('frontend')}}/js/jquery/jquery-2.2.4.min.js"></script>-->
     <!-- Popper js -->
     <script src="{{asset('frontend')}}/js/bootstrap/popper.min.js"></script>
     <!-- Bootstrap-4 js -->
@@ -746,6 +752,37 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="{{asset('frontend')}}/js/others/plugins.js"></script>
     <!-- Active JS -->
     <script src="{{asset('frontend')}}/js/active.js"></script>
+
+
+<input id="search" name="search" type="text" class="col-sm-12 col-lg-3 ml-0 mr-0 custom-input form-control" placeholder="Destination" />
+
+
+<script>
+ $(document).ready(function() {
+    $( "#search" ).autocomplete({
+
+        source: function(request, response) {
+            $.ajax({
+            url: "{{url('autocomplete')}}",
+            data: {
+                    term : request.term
+             },
+            dataType: "json",
+            success: function(data){
+               var resp = $.map(data,function(obj){
+                    //console.log(obj.city_name);
+                    return obj.name;
+               });
+
+               response(resp);
+            }
+        });
+    },
+    minLength: 1
+ });
+});
+</script>
+
 </body>
 
 </html>

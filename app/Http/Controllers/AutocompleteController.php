@@ -14,14 +14,14 @@ class AutoCompleteController extends Controller
         return view('search');
     }
 
-    public function search(Request $request)
+    public function search(Request $request, Destination $destination)
     {
           $search = $request->get('term');
 
 
            if(Destination::where('name', 'LIKE',  $search. '%')->exists()){
             a:
-                $destination=Destination::where('name', 'LIKE', '%'. $search. '%')->get()->toJson(JSON_PRETTY_PRINT);
+                $destination=Destination::where('name', 'LIKE', '%'. $search. '%')->take(3)->get()->toJson(JSON_PRETTY_PRINT);
                 return response($destination);
             }else{
                 $destination->getDestinationFromHotelsApi($search);

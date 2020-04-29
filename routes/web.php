@@ -23,4 +23,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('search', 'AutocompleteController@index');
 
 Route::get('autocomplete', 'AutocompleteController@search')->name('autocomplete');
-Route::get('test',' AutocompleteController@search');
+//Route::get('test',' AutocompleteController@search');
