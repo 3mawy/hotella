@@ -19,7 +19,7 @@ class CreateDestinationsTable extends Migration
             $table->string('dummy')->nullable();
             $table->string('longitude');
             $table->string('latitude');
-            $table->string('zipcode');
+            $table->string('destination_id');
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@
 
 
     <!-- Title -->
-    <title>Dorne - Directory &amp; Listing Template | Explore</title>
+    <title>Hotella</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{{asset('frontend')}}/img/core-img/favicon.ico">
@@ -40,7 +40,7 @@
     </div>
 
     <!-- ***** Search Form Area ***** -->
-    <div class="dorne-search-form d-flex align-items-center">
+     <!--  <div class="dorne-search-form d-flex align-items-center">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -48,14 +48,14 @@
                         <i class="pe-7s-close-circle" aria-hidden="true"></i>
                     </div>
 
-    <!--     <form action="#" method="get">
+      <form action="#" method="get">
                         <input type="search" name="caviarSearch" id="search" placeholder="Search Your Desire Destinations or Events">
                         <input type="submit" class="d-none" value="submit">
-                    </form>-->
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <!-- ***** Header Area Start ***** -->
     <header class="header_area" id="header">
@@ -95,14 +95,19 @@
                                     <a class="nav-link" href="contact.html">Contact</a>
                                 </li>
                             </ul>
-                            <!-- Search btn -->
+                            <!-- Search btn
                             <div class="dorne-search-btn">
                                 <a id="search-btn" href="#"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
-                            </div>
+                            </div>-->
                             <!-- Signin btn -->
+                            @guest
                             <div class="dorne-signin-btn">
-                                <a href="#">Sign in  or Register</a>
+                                <a href="{{ route('login') }}">Login</a>
                             </div>
+                            <div class="dorne-signin-btn">
+                                <a href="{{ route('register') }}">Register</a>
+                            </div>
+                            @endguest
                             <!-- Add listings btn -->
                             <div class="dorne-add-listings-btn">
                                 <a href="#" class="btn dorne-btn">+ Add Listings</a>
@@ -141,18 +146,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </footer>
     <!-- ****** Footer Area End ****** -->
-<div class="container">
-    <div class="row">
-        <div class="col-12"><h2>Laravel 5.7 Auto Complete Search Using Jquery UI</h2></div>
-        <div class="col-12">
-            <div id="custom-search-input">
-                <div class="input-group">
-                    <input id="search" name="search" type="text" class="form-control" placeholder="Search" />
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
     <!-- jQuery-2.2.4 js
     <script src="{{asset('frontend')}}/js/jquery/jquery-2.2.4.min.js"></script>-->
     <!-- Popper js -->
@@ -179,7 +173,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                    dataType: "json",
                    success: function(data){
                       var resp = $.map(data,function(obj){
-                           //console.log(obj.city_name);
                            return obj.name;
                       });
 

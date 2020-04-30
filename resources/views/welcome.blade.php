@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @section('content')
 
-<section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url({{asset('frontend')}}/img/bg-img/hero-1.jpg);">
+<section class="dorne-welcome-area bg-img bg-overlay" style=" background-image: url({{asset('frontend')}}/img/bg-img/hero-1.jpg);">
     <div class="container h-100">
         <div class="row h-100 align-items-center justify-content-center">
             <div class="col-12 col-md-10">
-                <div class="hero-content">
+                <div class="hero-content" style="padding-top: 2rem;">
                     <h2>Discover places near you</h2>
                     <h4>This is the best guide of your city</h4>
                 </div>
@@ -14,31 +14,22 @@
                     <!-- Tabs -->
                     <div class="nav nav-tabs" id="heroTab" role="tablist">
                         <a class="nav-item nav-link active" id="nav-places-tab" data-toggle="tab" href="#nav-places" role="tab" aria-controls="nav-places" aria-selected="true">Places</a>
-                        <!--<a class="nav-item nav-link" id="nav-events-tab" data-toggle="tab" href="#nav-events" role="tab" aria-controls="nav-events" aria-selected="false">Events</a> -->
+                        <a class="nav-item nav-link" id="nav-events-tab" data-toggle="tab" href="#nav-events" role="tab" aria-controls="nav-events" aria-selected="false">Flights</a> -->
                     </div>
                     <!-- Tabs Content -->
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
                             <h6>What are you looking for?</h6>
 
-                            <form action="#" method="get">
+                            <form action="/searchresult" method="get">
+                                @csrf
+
                                 <div class="flex">
                                     <div class="row">
 
-                                        <input id="search" name="search" type="text" class="col-sm-12 col-lg-3 ml-0 mr-0 custom-input form-control" placeholder="Destination" />
-
-                                <select class="ah custom-select col-sm-6 col-lg-1 ml-0 mr-0">
-                                    <option selected>Check-in</option>
-                                    <option value="1">Catagories 1</option>
-                                    <option value="2">Catagories 2</option>
-                                    <option value="3">Catagories 3</option>
-                                </select>
-                                <select class="ah custom-select col-sm-6 col-lg-1 ml-0 mr-0">
-                                    <option selected>Check-out</option>
-                                    <option value="1">Catagories 1</option>
-                                    <option value="2">Catagories 2</option>
-                                    <option value="3">Catagories 3</option>
-                                </select>
+                                        <input id="search" name="search" type="text" class="col-sm-12 col-lg-3 ml-0 mr-0 custom-input form-control" placeholder="Where to!" style="font-size: inherit" />
+                                        <input type="text" name="checkIn"placeholder="Check in" onfocus="(this.type='date')"id="checkIn" class="ah  custom-date col-sm-6 col-lg-1 ml-0 mr-0 " />
+                                        <input type="text" name="checkOut"placeholder="Check out" onfocus="(this.type='date')"id="checkOut" class="ah  custom-date col-sm-6 col-lg-1 ml-0 mr-0 " />
                                 <select class="ah custom-select col-sm-6 col-lg-1 ml-0 mr-0">
                                     <option selected>adults</option>
                                      @for ($i = 0; $i < 10; $i++)
@@ -89,10 +80,9 @@
             </div>
         </div>
     </div>
-    <!-- Hero Social Btn -->
+    <!-- Hero Social Btn
     <div class="hero-social-btn">
         <div class="social-title d-flex align-items-center">
-            <h6>Follow us on Social Media</h6>
             <span></span>
         </div>
         <div class="social-btns">
@@ -102,35 +92,7 @@
             <a href="#"><i class="fa fa-twitter" aria-haspopup="true"></i></a>
             <a href="#"><i class="fa fa-facebook" aria-haspopup="true"></i></a>
         </div>
-    </div>
+    </div>-->
 </section>
 <!-- ***** Welcome Area End ***** -->
-<script>
-    $(document).ready(function() {
-       $( "#search" ).autocomplete({
-
-           source: function(request, response) {
-               $.ajax({
-               url: "{{url('autocomplete')}}",
-               data: {
-                       term : request.term
-                },
-               dataType: "json",
-               success: function(data){
-                  var resp = $.map(data,function(obj){
-                       //console.log(obj.city_name);
-                       return obj.name;
-                  });
-
-                  response(resp);
-               }
-           });
-       },
-       minLength: 1,
-
-    });
-   });
-
-   </script>
-
 @endsection

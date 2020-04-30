@@ -1,5 +1,6 @@
 <?php
 
+use App\Destination;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,5 @@ Route::get('search', 'AutocompleteController@index');
 
 Route::get('autocomplete', 'AutocompleteController@search')->name('autocomplete');
 //Route::get('test',' AutocompleteController@search');
+Route::get('searchresult', 'SearchController@index');
+

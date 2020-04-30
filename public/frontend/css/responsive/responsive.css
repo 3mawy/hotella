@@ -42,9 +42,11 @@
     .single-contact-info:first-child {
         margin-right: 15px;
     }
+
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+
     .navbar-toggler {
         border: 2px solid #fff;
         color: #fff;
@@ -204,6 +206,7 @@
         width: 100%;
     }
     .ah{
+
         width: 50%!important;
     }
     .single-catagory-area {
