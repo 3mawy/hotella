@@ -1,0 +1,27 @@
+{
+    "recommendations": [
+        "andys8.jest-snippets",
+        "breezelin.phpstan",
+        "dbaeumer.vscode-eslint",
+        "eamodio.gitlens",
+        "editorconfig.editorconfig",
+        "esbenp.prettier-vscode",
+        "felixfbecker.php-debug",
+        "felixfbecker.php-intellisense",
+        "ikappas.phpcs",
+        "mehedidracula.php-namespace-resolver",
+        "orta.vscode-jest",
+        "streetsidesoftware.code-spell-checker",
+        "timonwong.shellcheck",
+        "whatwedo.twig",
+        "yzhang.markdown-all-in-one"
+    ],
+
+    "unwantedRecommendations": [
+        "dbaeumer.jshint",
+        "hookyqr.beautify",
+        "davidanson.vscode-markdownlint",
+        "pkosta2005.heroku-command",
+        "googlecloudtools.cloudcode"
+    ]
+}
