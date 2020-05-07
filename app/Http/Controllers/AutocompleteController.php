@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Destination;
+use App\Services\RapidApiService;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Validator;
 
 class AutoCompleteController extends Controller
 {
@@ -14,23 +16,26 @@ class AutoCompleteController extends Controller
         return view('search');
     }
 
-    public function search(Request $request, Destination $destination)
+    public function search(Request $request, Destination $destinationModel, RapidApiService $rapidApiService)
     {
-          $search = $request->get('term');
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'term' => 'required|min:2'
+            ]
+        );
+        if ($validator->fails()) {
+            return response()->json($validator->errors());
+        }
+        $search = $request->get('term');
 
+        $destinations =  $destinationModel->listByName($search);
 
-           if(Destination::where('name', 'LIKE',  $search. '%')->exists()){
-            a:
-                $destination=Destination::where('name', 'LIKE', '%'. $search. '%')->take(3)->get()->toJson(JSON_PRETTY_PRINT);
-                return response($destination);
-            }else{
-                $destination->getDestinationFromHotelsApi($search);
-                goto a;
-            }
+        if ($destinations->isEmpty()) {
+            $rapidApiService->getDestinationFromHotelsApi($search);
+            $destinations =  $destinationModel->listByName($search);
+        }
 
-
-        /*$search = $request->get('term');
-
-          return Destination::inDataBase($search);*/
+        return response()->json($destinations);
     }
 }
