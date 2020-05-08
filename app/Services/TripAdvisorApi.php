@@ -48,14 +48,9 @@ class TripAdvisorApi
 
     public function autoCompleteTripAdvisorApi($search)
     {
-        $response = Unirest\Request::get("https://tripadvisor1.p.rapidapi.com/locations/auto-complete?lang=en_US&units=km&query=$search",
-        array(
-          "X-RapidAPI-Host" => "tripadvisor1.p.rapidapi.com",
-          "X-RapidAPI-Key" => "7d6f037ee1msh7f9148c2f5901c2p17cc79jsnc16226e926d4"
-        )
-      );
-        /* $response = $this->request(
-            '/locations/auto-complete?',
+
+        $response = $this->request(
+            '/locations/auto-complete',
             [
                 'query' => $search
             ]
@@ -64,7 +59,7 @@ class TripAdvisorApi
         if ($response->code !== 200) {
             Log::alert("Api return an error raw_body {$response->raw_body} ");
             return;
-        } */
+        }
 
         Destination::firstOrCreate([
             'name' => $response->body->data[0]->result_object->name,
