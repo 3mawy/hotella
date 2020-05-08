@@ -32,14 +32,14 @@ class RapidApiService
             'adults1' => $adults,
             'children1' => $children
         ];
-        \Unirest\Request::get(
-            "{$this->baseUrl}/properties/list?" . build_query($query),
-            $this->header
-        );
-        /**
-         *  Or better you can call
-         *  $this->request('/properties/list',$query);
-         *  */
+        $response = $this->request('/properties/list', $query);
+        return [
+            'name' => $response->body,
+
+
+
+
+        ];
     }
 
 

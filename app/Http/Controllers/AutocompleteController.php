@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Destination;
 use App\Services\RapidApiService;
+use App\Services\TripAdvisorApi;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Validator;
@@ -16,7 +17,7 @@ class AutoCompleteController extends Controller
         return view('search');
     }
 
-    public function search(Request $request, Destination $destinationModel, RapidApiService $rapidApiService)
+    public function search(Request $request, Destination $destinationModel, TripAdvisorApi $tripAdvisorApi)
     {
         $validator = Validator::make(
             $request->all(),
@@ -32,7 +33,9 @@ class AutoCompleteController extends Controller
         $destinations =  $destinationModel->listByName($search);
 
         if ($destinations->isEmpty()) {
-            $rapidApiService->getDestinationFromHotelsApi($search);
+            dd();
+         //   $rapidApiService->getDestinationFromHotelsApi($search);
+            $tripAdvisorApi->autoCompleteTripAdvisorApi($search);
             $destinations =  $destinationModel->listByName($search);
         }
 

@@ -9,7 +9,7 @@ class RapidApiServiceMock extends RapidApiService
 {
     public function __construct()
     {
-        $this->faker = Faker::create();;
+        $this->faker = Faker::create();
     }
 
     public function listProperties($destinationId, $checkIn, $checkOut, $adults = 1, $children = 0)

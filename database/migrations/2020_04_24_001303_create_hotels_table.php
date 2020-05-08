@@ -14,17 +14,23 @@ class CreateHotelsTable extends Migration
     public function up()
     {
         Schema::create('hotels', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigInteger('id')->unique();
             $table->string('name');
-            $table->string('motto');
+            $table->string('motto')->nullable();
+            $table->string('thumbnail_url')->nullable();
+            $table->bigInteger('star_rating')->nullable();
             $table->string('address');
             $table->string('longitude');
             $table->string('latitude');
-            $table->string('city');
-            $table->string('state');
-            $table->string('zipcode');
-            $table->string('phone_number');
-        
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->bigInteger('zipcode')->nullable();
+            $table->string('phone_number')->nullable();
+
+
+            $table->foreignId('destination_id');
+
+
             $table->softDeletes();
             $table->timestamps();
         });

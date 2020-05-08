@@ -30,13 +30,13 @@
                                         <input id="search" name="search" type="text" class="col-sm-12 col-lg-3 ml-0 mr-0 custom-input form-control" placeholder="Where to!" style="font-size: inherit" />
                                         <input type="text" name="checkIn"placeholder="Check in" onfocus="(this.type='date')"id="checkIn" class="ah  custom-date col-sm-6 col-lg-1 ml-0 mr-0 " />
                                         <input type="text" name="checkOut"placeholder="Check out" onfocus="(this.type='date')"id="checkOut" class="ah  custom-date col-sm-6 col-lg-1 ml-0 mr-0 " />
-                                <select class="ah custom-select col-sm-6 col-lg-1 ml-0 mr-0">
+                                <select  name="adults" class="ah custom-select col-sm-6 col-lg-1 ml-0 mr-0">
                                     <option selected>adults</option>
                                      @for ($i = 0; $i < 10; $i++)
                                     <option value="{{$i}}">{{$i}}</option>
                                      @endfor
                                 </select>
-                                <select class="ah custom-select col-sm-6 col-lg-1 mr-0 ml-0">
+                                <select name="children" class="ah custom-select col-sm-6 col-lg-1 mr-0 ml-0">
                                     <option selected>children</option>
                                     @for ($i = 0; $i < 10; $i++)
                                     <option value="{{$i}}">{{$i}}</option>
@@ -95,4 +95,77 @@
     </div>-->
 </section>
 <!-- ***** Welcome Area End ***** -->
+<!-- ***** About Area Start ***** -->
+<section class="dorne-about-area pb-5 pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="about-content text-center">
+                    <h2>Discover your city with <br><span>Hotello</span></h2>
+                    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce quis tempus elit. Sed efficitur tortor neque, vitae aliquet urna varius sit amet. Ut rhoncus, nunc nec tincidunt volutpat, ex libero.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** About Area End ***** -->
+
+<!-- ***** Editor Pick Area Start ***** -->
+<section class="dorne-editors-pick-area bg-img bg-overlay-9 section-padding-100" style="background-image: url({{asset('frontend')}}/img/bg-img/hero-2.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading text-center">
+                    <span></span>
+                    <h4>Cities you must see</h4>
+                    <p>Editor’s pick</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.2s">
+                    <img src="{{asset('frontend')}}/img/bg-img/editor-1.jpg" alt="">
+                    <div class="editors-pick-info">
+                        <div class="places-total-destinations d-flex">
+                            <a href="#">New York</a>
+                            <a href="#">1643 Destinations</a>
+                        </div>
+                        <div class="add-more">
+                            <a href="#">+</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.4s">
+                    <img src="{{asset('frontend')}}/img/bg-img/editor-2.jpg" alt="">
+                    <div class="editors-pick-info">
+                        <div class="places-total-destinations d-flex">
+                            <a href="#">Barcelona</a>
+                            <a href="#">943 Destinations</a>
+                        </div>
+                        <div class="add-more">
+                            <a href="#">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.6s">
+                    <img src="{{asset('frontend')}}/img/bg-img/editor-3.jpg" alt="">
+                    <div class="editors-pick-info">
+                        <div class="places-total-destinations d-flex">
+                            <a href="#">paris</a>
+                            <a href="#">243 Destinations</a>
+                        </div>
+                        <div class="add-more">
+                            <a href="#">+</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Editor Pick Area End ***** -->
 @endsection

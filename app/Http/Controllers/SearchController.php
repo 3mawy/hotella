@@ -17,10 +17,12 @@ class SearchController extends Controller
     }
     public function index(Request $request, Destination $destination,RapidApiService $rapidApiService)
     {
-        $search = $_GET['search'];
-        $checkIn = $_GET['checkIn'];
-        $checkOut = $_GET['checkOut'];
-        $destinationId = 10233105;
+        $search = $request->get('search');
+        $checkIn = $request->get('checkIn');
+        $checkOut = $request->get('checkOut');
+        //$adults = $request->input('adults');
+        //$children = $request->input('children');
+        $destinationId = $destination->getDestinationId($search);
         $rapidApiService->listProperties($destinationId, $checkIn, $checkOut);
     }
 }
