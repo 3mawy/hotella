@@ -52,7 +52,7 @@ class RapidApiService implements ListsHotelsForHotella
             'total_count' => $response->body->data->body->searchResults->totalCount,
 
          //  $hotels
-         shady    'id' => $response->body->data->body->searchResults->results[0]->id,
+            'id' => $response->body->data->body->searchResults->results[0]->id,
             'name' => $response->body->data->body->searchResults->results[0]->name,
             'star_rating' => $response->body->data->body->searchResults->results[0]->starRating,
             'thumbnail_url' => $response->body->data->body->searchResults->results[0]->thumbnailUrl
@@ -67,7 +67,7 @@ class RapidApiService implements ListsHotelsForHotella
         if ($this->cacheEnabled) {
             return $this->AutoCompleteDataBaseProxy($search);
         }
-        return $this->AutoCompleteHotelsApi($search);
+        return $this->AutoCompleteApiProxy($search);
     }
 
     public function AutoCompleteDataBaseProxy(string $search)
@@ -120,12 +120,13 @@ class RapidApiService implements ListsHotelsForHotella
         return $entities;
     }
 
-   /* public function AutoCompleteHotelsApi($destination)
+    /*public function AutoCompleteHotelsApi($destination)
     {
 
 
         return (new Destination())->listByName($destination)->get();
-    }*/
+    }
+*/
 
     /**
      * @param $results array a list of Rapid hotels

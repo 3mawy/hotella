@@ -32,8 +32,8 @@ class AutoCompleteController extends Controller
         $destinations =  $destinationModel->listByName($search);
 
         if ($destinations->isEmpty()) {
-            $rapidApiService->autoCompleteHotelsApi($search);
-            $destinations =  $destinationModel->listByName($search);
+
+            $destinations =  $rapidApiService->AutoCompleteProxy($search);
         }
 
         return response()->json($destinations);

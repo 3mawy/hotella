@@ -21,7 +21,7 @@
                         <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
                             <h6>What are you looking for?</h6>
 
-                            <form action="/searchresult" method="get">
+                            <form action="/searchResult" method="get">
                                 @csrf
                                 <input type="hidden" name="dest_id" id="dest_id" />
 

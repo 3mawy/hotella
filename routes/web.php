@@ -25,5 +25,5 @@ Route::get('search', 'AutocompleteController@index');
 
 Route::get('autocomplete', 'AutocompleteController@search')->name('autocomplete');
 //Route::get('test',' AutocompleteController@search');
-Route::get('searchresult', 'SearchController@index');
+Route::get('searchResult', 'SearchController@index');
 
