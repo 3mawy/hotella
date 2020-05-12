@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public static function getDestinationId($destinationName)
+    public function getDestinationId($destinationName)
     {
         $destinationId = Destination::select('destination_id')
             ->where('name', '=', $destinationName)
@@ -17,10 +17,13 @@ class SearchController extends Controller
     }
     public function index(Request $request, Destination $destination,RapidApiService $rapidApiService)
     {
-        $search = $_GET['search'];
-        $checkIn = $_GET['checkIn'];
-        $checkOut = $_GET['checkOut'];
-        $destinationId = 10233105;
-        $rapidApiService->listProperties($destinationId, $checkIn, $checkOut);
-    }
+        $search = $request->get('search');
+        $checkIn = $request->get('checkIn');
+        $checkOut = $request->get('checkOut');
+        //$adults = $request->input('adults');
+        //$children = $request->input('children');
+        $destinationId =$request->get('dest_id'); /*$this->getDestinationId($search)*/;
+        $response=$rapidApiService->listProperties($destinationId, $checkIn, $checkOut);
+        $response[0]->star_rating;
+        return view('search', ['hotels' => $response]);    }
 }

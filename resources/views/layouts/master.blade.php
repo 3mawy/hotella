@@ -160,30 +160,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="{{asset('frontend')}}/js/google-map/explore-map-active.js"></script>
     <!-- Active JS -->
     <script src="{{asset('frontend')}}/js/active.js"></script>
-    <script>
-        $(document).ready(function() {
-           $( "#search" ).autocomplete({
 
-               source: function(request, response) {
-                   $.ajax({
-                   url: "{{url('autocomplete')}}",
-                   data: {
-                           term : request.term
-                    },
-                   dataType: "json",
-                   success: function(data){
-                      var resp = $.map(data,function(obj){
-                           return obj.name;
-                      });
-
-                      response(resp);
-                   }
-               });
-           },
-           minLength: 1
-        });
-       });
-       </script>
+    @yield('scripts');
 </body>
 
 </html>

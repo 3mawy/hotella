@@ -24,11 +24,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind(
+       /* $this->app->bind(
             RapidApiService::class,
             function ($app) {
                 return new \App\Services\RapidApiServiceMock();
             }
-        );
+        );*/
     }
 }

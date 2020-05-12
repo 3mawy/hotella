@@ -23,6 +23,7 @@
 
                             <form action="/searchresult" method="get">
                                 @csrf
+                                <input type="hidden" name="dest_id" id="dest_id" />
 
                                 <div class="flex">
                                     <div class="row">
@@ -30,13 +31,13 @@
                                         <input id="search" name="search" type="text" class="col-sm-12 col-lg-3 ml-0 mr-0 custom-input form-control" placeholder="Where to!" style="font-size: inherit" />
                                         <input type="text" name="checkIn"placeholder="Check in" onfocus="(this.type='date')"id="checkIn" class="ah  custom-date col-sm-6 col-lg-1 ml-0 mr-0 " />
                                         <input type="text" name="checkOut"placeholder="Check out" onfocus="(this.type='date')"id="checkOut" class="ah  custom-date col-sm-6 col-lg-1 ml-0 mr-0 " />
-                                <select class="ah custom-select col-sm-6 col-lg-1 ml-0 mr-0">
+                                <select  name="adults" class="ah custom-select col-sm-6 col-lg-1 ml-0 mr-0">
                                     <option selected>adults</option>
                                      @for ($i = 0; $i < 10; $i++)
                                     <option value="{{$i}}">{{$i}}</option>
                                      @endfor
                                 </select>
-                                <select class="ah custom-select col-sm-6 col-lg-1 mr-0 ml-0">
+                                <select name="children" class="ah custom-select col-sm-6 col-lg-1 mr-0 ml-0">
                                     <option selected>children</option>
                                     @for ($i = 0; $i < 10; $i++)
                                     <option value="{{$i}}">{{$i}}</option>
@@ -96,3 +97,38 @@
 </section>
 <!-- ***** Welcome Area End ***** -->
 @endsection
+
+@section('scripts')
+
+<script>
+    $(document).ready(function() {
+       $( "#search" ).autocomplete({
+
+           source: function(request, response) {
+               $.ajax({
+               url: "{{url('autocomplete')}}",
+               data: {
+                       term : request.term
+                },
+               dataType: "json",
+               success: function(data){
+                  var resp = $.map(data,function(obj){
+                       return {label:obj.name,id:obj.destination_id};
+                  });
+
+                  response(resp);
+               }
+                });
+            },
+            select: function( event, ui ) {
+               console.log(ui.item);
+                $( "#dest_id" ).val( ui.item.id );
+                $( "#search" ).val( ui.item.label );
+
+                return false;
+            },
+            minLength: 1
+    });
+   });
+   </script>
+   @endsection
