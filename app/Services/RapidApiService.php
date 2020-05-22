@@ -45,7 +45,6 @@ class RapidApiService implements ListsHotelsForHotella
         ];
         $response = $this->request('/properties/list', $query);
         $results = $response->body->data->body->searchResults->results;
-        dd($results);
         return $this->transformRapidToHotella($results);
         /*  $searchResults = [
             'search_destination' => $response->body->data->body->query->destination->value,
@@ -69,6 +68,7 @@ class RapidApiService implements ListsHotelsForHotella
         }
         return $this->AutoCompleteApiProxy($search);
     }
+
 
     public function AutoCompleteDataBaseProxy(string $search)
     {
@@ -142,9 +142,13 @@ class RapidApiService implements ListsHotelsForHotella
             $hotel->star_rating = $result->starRating;
             $hotel->thumbnail_url = $result->thumbnailUrl;
             $hotel->destination = $result->address->locality;
-            // 'rooms_left' = $result->roomsLeft;
             $hotel->price = $result->ratePlan->price->current;
-            //'old_price'= $result->ratePlan->price->old
+            if (isset($hotel->rooms_left)){
+                $hotel->rooms_left = $result->roomsLeft;
+            }
+            if (isset($hotel->old_price)){
+                $hotel->old_price = $result->ratePlan->price->old;
+            }
             $hotels[] = $hotel;
         }
         return $hotels;

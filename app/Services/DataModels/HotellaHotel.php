@@ -11,5 +11,7 @@ class HotellaHotel
     public $star_rating;
     public $thumbnail_url;
     public $destination;
+    public $rooms_left;
     public $price;
+    public $old_price;
 }

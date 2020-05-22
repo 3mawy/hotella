@@ -1,43 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+@extends('layouts.master')
+@section('content')
 
-</head>
-<body>
+    <!-- ***** breadcumb area start ***** -->
+<x-_breadcrumb/>
+    <!-- ***** breadcumb area end ***** -->
 
 
-<input id="search" name="search" type="text" class="col-sm-12 col-lg-3 ml-0 mr-0 custom-input form-control" placeholder="Destination" />
+    <div class="flex" id="wrapper">
+        <div class="row search-page-tweaks sidebar-wrapper">
+            <div id="sidebar" class="col-3 search-filters">
+                <x-_sidebar/>
+            </div>
+            <div class="col-9 search-index " style="background-color: #ffffff;height:auto;" id="page-content-wrapper">
+               <x-_card-index/>
+            </div>
+
+            {{-- {{ $hotels->links() }}--}}
 
 
-<script>
- $(document).ready(function() {
-    $( "#search" ).autocomplete({
+        </div>
 
-        source: function(request, response) {
-            $.ajax({
-            url: "{{url('autocomplete')}}",
-            data: {
-                    term : request.term
-             },
-            dataType: "json",
-            success: function(data){
-               var resp = $.map(data,function(obj){
-                    //console.log(obj.city_name);
-                    return obj.name;
-               });
+@endsection
 
-               response(resp);
-            }
-        });
-    },
-    minLength: 1
- });
-});
-</script>
-</body>
-</html>
+
+
+

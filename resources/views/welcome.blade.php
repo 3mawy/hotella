@@ -17,16 +17,16 @@
                         <a class="nav-item nav-link" id="nav-events-tab" data-toggle="tab" href="#nav-events" role="tab" aria-controls="nav-events" aria-selected="false">Flights</a> -->
                     </div>
                     <!-- Tabs Content -->
-                    <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-content" id="">
                         <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
-                            <h6>What are you looking for?</h6>
+                            <h6 >What are you looking for?</h6>
 
-                            <form action="/searchResult" method="get">
+                            <form action="/searchresults" method="get">
                                 @csrf
                                 <input type="hidden" name="dest_id" id="dest_id" />
 
                                 <div class="flex">
-                                    <div class="row">
+                                    <div class=" ml-0 row">
 
                                         <input id="search" name="search" type="text" class="col-sm-12 col-lg-3 ml-0 mr-0 custom-input form-control" placeholder="Where to!" style="font-size: inherit" />
                                         <input type="text" name="checkIn"placeholder="Check in" onfocus="(this.type='date')"id="checkIn" class="ah  custom-date col-sm-6 col-lg-1 ml-0 mr-0 " />
@@ -44,7 +44,7 @@
                                      @endfor
                                 </select>
                                 <br class="p-1">
-                                <button type="submit" class="btn dorne-btn col-sm-12 col-lg-1 "><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+                                <button type="submit" class="btn dorne-btn col-sm-12 col-lg-1 " style="padding-left: 1.5rem;padding-right: 1.5rem;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
                             </div>
                             </div>
                             </form>
@@ -96,6 +96,21 @@
     </div>-->
 </section>
 <!-- ***** Welcome Area End ***** -->
+<!-- ***** About Area Start ***** -->
+<section class="dorne-about-area section-padding-0-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="about-content text-center">
+                    <h2>Discover your city with <br><span>Hotella.</span></h2>
+                    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce quis tempus elit. Sed efficitur tortor neque, vitae aliquet urna varius sit amet. Ut rhoncus, nunc nec tincidunt volutpat, ex libero.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** About Area End ***** -->
+<x-_recommended/>
 @endsection
 
 @section('scripts')

@@ -24,6 +24,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+      /*  Blade::component('layouts.components._navBar','navBar');
+        Blade::component('layouts.components._footer','footer');
+        Blade::component('layouts.components._hotelCard','hotelCard');
+        Blade::component('layouts.components._recommended','recommended');
+        Blade::component('layouts.components._carousel.blade.php','carousel');
+        Blade::component('layouts.components._sideBar','sideBar');*/
        /* $this->app->bind(
             RapidApiService::class,
             function ($app) {

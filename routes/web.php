@@ -21,9 +21,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('search', 'AutocompleteController@index');
-
 Route::get('autocomplete', 'AutocompleteController@search')->name('autocomplete');
+Route::get('searchresults', function (){
+    return view('search');
+} /*'SearchController@index'*/);
+Route::get('hotels/{$hotel}', function(){
+
+    return view('hotel');
+});
 //Route::get('test',' AutocompleteController@search');
-Route::get('searchResult', 'SearchController@index');
+//Route::get('search', 'AutocompleteController@index');
+
 

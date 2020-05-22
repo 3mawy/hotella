@@ -20,10 +20,9 @@ class SearchController extends Controller
         $search = $request->get('search');
         $checkIn = $request->get('checkIn');
         $checkOut = $request->get('checkOut');
-        //$adults = $request->input('adults');
-        //$children = $request->input('children');
+        $adults = $request->input('adults');
+        $children = $request->input('children');
         $destinationId =$request->get('dest_id'); /*$this->getDestinationId($search)*/;
         $response=$rapidApiService->listProperties($destinationId, $checkIn, $checkOut);
-        $response[0]->star_rating;
         return view('search', ['hotels' => $response]);    }
 }
