@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Destination;
 use App\Hotel;
+use App\Review;
+use App\Room;
 use Illuminate\Http\Request;
 
 class HotelController extends Controller
@@ -14,7 +17,6 @@ class HotelController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -41,14 +43,17 @@ class HotelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Hotel  $hotel
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Hotel $hotel)
+    public function show($id)
     {
-        //
+        $hotel = Hotel::where('id',$id)->first();
+        $destination = Destination::where('destination_id',$hotel->destination_id)->first();
+        $rooms = Room::where('hotel_id',$hotel->id)->get();
+        $reviews = Review::where('hotel_id',$hotel->id)->get();
+        return view('hotel', ['hotel' => $hotel, 'destination' => $destination->name, 'rooms' => $rooms, 'reviews' => $reviews]);
     }
-
     /**
      * Show the form for editing the specified resource.
      *

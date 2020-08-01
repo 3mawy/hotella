@@ -14,40 +14,40 @@
         <div class="row">
             <div class="col-12 col-lg-6">
                 <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.2s">
-                    <img src="{{asset('frontend')}}/img/bg-img/editor-1.jpg" alt="">
+                    <img src="{{asset('frontend')}}/img/bg-img/alex.jpg" alt="">
                     <div class="editors-pick-info">
                         <div class="places-total-destinations d-flex">
-                            <a href="#">New York</a>
-                            <a href="#">1643 Destinations</a>
+                            <a href="#">Alexandria</a>
+                            <a href="#">120 Destinations</a>
                         </div>
-                        <div class="add-more">
-                            <a href="#">+</a>
+                    </div>
+                </div>
+                <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.2s">
+                    <img src="{{asset('frontend')}}/img/bg-img/luxor.jpg" alt="">
+                    <div class="editors-pick-info">
+                        <div class="places-total-destinations d-flex">
+                            <a href="#">Luxor</a>
+                            <a href="#">148 Destinations</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-6">
                 <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.4s">
-                    <img src="{{asset('frontend')}}/img/bg-img/editor-2.jpg" alt="">
+                    <img src="{{asset('frontend')}}/img/bg-img/cairo.jpg" alt="">
                     <div class="editors-pick-info">
                         <div class="places-total-destinations d-flex">
-                            <a href="#">Barcelona</a>
+                            <a href="#">Cairo</a>
                             <a href="#">943 Destinations</a>
-                        </div>
-                        <div class="add-more">
-                            <a href="#">+</a>
                         </div>
                     </div>
                 </div>
                 <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.6s">
-                    <img src="{{asset('frontend')}}/img/bg-img/editor-3.jpg" alt="">
+                    <img src="{{asset('frontend')}}/img/bg-img/sharm.jpg" alt="">
                     <div class="editors-pick-info">
                         <div class="places-total-destinations d-flex">
-                            <a href="#">paris</a>
+                            <a href="#">Sharm El Sheikh</a>
                             <a href="#">243 Destinations</a>
-                        </div>
-                        <div class="add-more">
-                            <a href="#">+</a>
                         </div>
                     </div>
                 </div>

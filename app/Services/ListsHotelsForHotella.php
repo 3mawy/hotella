@@ -16,6 +16,6 @@ interface ListsHotelsForHotella
      * @param $children
      * @return HotellaHotel[]
      */
-    public function listProperties($destinationId, $checkIn, $checkOut, $adults , $children ) : array ;
+    public function listProperties($destinationId, $checkIn, $checkOut, $adults , $children )  ;
 
 }

@@ -22,13 +22,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('autocomplete', 'AutocompleteController@search')->name('autocomplete');
-Route::get('searchresults', function (){
-    return view('search');
-} /*'SearchController@index'*/);
-Route::get('hotels/{$hotel}', function(){
-
-    return view('hotel');
-});
+Route::get('search-results', 'SearchController@index')->name('search.index');
+Route::get('search-results/{hotel}', 'SearchController@show')->name('search.show');;
+Route::get('hotels/{hotel}', 'HotelController@show')->name('hotel.show');;
+Route::get('/{any}','HotelTabsController@index')->where(' any', '.*');
 //Route::get('test',' AutocompleteController@search');
 //Route::get('search', 'AutocompleteController@index');
 

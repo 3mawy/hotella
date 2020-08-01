@@ -29,7 +29,7 @@ class RapidApiService implements ListsHotelsForHotella
      * @param int $children
      * @return HotellaHotel[]
      */
-    public function listProperties($destinationId, $checkIn, $checkOut, $adults = 1, $children = 0): array
+    public function listProperties($destinationId, $checkIn, $checkOut, $adults = 1, $children = 0)
     {
         $query = [
             'currency' => 'USD',
@@ -45,21 +45,15 @@ class RapidApiService implements ListsHotelsForHotella
         ];
         $response = $this->request('/properties/list', $query);
         $results = $response->body->data->body->searchResults->results;
-        return $this->transformRapidToHotella($results);
-        /*  $searchResults = [
-            'search_destination' => $response->body->data->body->query->destination->value,
+        return  [
+            'search_destination' => $response->body->data->body->header,
             'total_count' => $response->body->data->body->searchResults->totalCount,
+            'hotel_index'=>$this->transformRapidToHotella($results)
+        ];
 
-         //  $hotels
-            'id' => $response->body->data->body->searchResults->results[0]->id,
-            'name' => $response->body->data->body->searchResults->results[0]->name,
-            'star_rating' => $response->body->data->body->searchResults->results[0]->starRating,
-            'thumbnail_url' => $response->body->data->body->searchResults->results[0]->thumbnailUrl
-
-        ];*/
     }
 
-    private $cacheEnabled = true;
+   /* private $cacheEnabled = true;
 
     public function AutoCompleteProxy(string $search)
     {
@@ -118,15 +112,52 @@ class RapidApiService implements ListsHotelsForHotella
 
         }
         return $entities;
+    }*/
+    public function GetHotelDetails($id, $checkIn=0, $checkOut=0, $adults =1, $children =0){
+        $query = [
+            'id' => $id,
+            'currency' => 'USD',
+            'locale' => 'en_US',
+            'checkIn' => $checkIn,
+            'checkOut' => $checkOut,
+            'adults1' => $adults,
+            'children1' => $children
+        ];
+        $response = $this->request('properties/get-details', $query);
+        return $response->body->data->body;
     }
+    /**
+     * @param $response
+     * @param $destination
+     * @return mixed
+     */
+    public function AutoCompleteHotelsApi( $destination)
+    { $query = [
+        'currency' => 'US',
+        'query' => $destination
+    ];
+        $response = $this->request('/locations/search', $query);
+         if ($response->code !== 200) {
+            Log::alert("Api return an error raw_body {$response->raw_body} ");
+            return;
+        }
 
-    /*public function AutoCompleteHotelsApi($destination)
-    {
+
+        $entities=$response->body->suggestions[0];
+            foreach ($entities as $entity) {
+                Destination::firstOrCreate(
+                    [
+                        'name' => $entity->name,
+                        'longitude' => $entity->longitude,
+                        'latitude' => $entity->latitude,
+                        'destination_id' => $entity->destinationId
+                    ]
+                );
+            }
 
 
         return (new Destination())->listByName($destination)->get();
     }
-*/
 
     /**
      * @param $results array a list of Rapid hotels

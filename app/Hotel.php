@@ -14,5 +14,19 @@ class Hotel extends Model
     {
         return $this->hasMany(Room::class)->latest();
     }
+    public function destination()
+    {
+        return $this->belongsTo(Destination::class);
+    }
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+    public function utilities()
+    {
+        return $this->belongsTomany(Utility::class);
+    }
+
+
 
 }

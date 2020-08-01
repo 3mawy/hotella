@@ -14,26 +14,17 @@
                     <div class="single-listing-content">
 
                         <div class="listing-title">
-                            <h4>Grand Hotel</h4>
-                            <h6>Manhattan</h6>
+                            <h4>{{$hotel->name}}</h4>
+                            <h6>{{$destination}}</h6>
 
                         </div>
-                        <div class="ratings">
-                            <div style="margin-bottom: 2px;margin-top: 8px;">
-                                <img src="{{asset('frontend')}}/img/clients-img/star-fill.png" alt="">
-                                <img src="{{asset('frontend')}}/img/clients-img/star-fill.png" alt="">
-                                <img src="{{asset('frontend')}}/img/clients-img/star-fill.png" alt="">
-                                <img src="{{asset('frontend')}}/img/clients-img/star-fill.png" alt="">
-                                <img src="{{asset('frontend')}}/img/clients-img/star-fill.png" alt="">
-                            </div>
-                            <div>
-                                <p style="text-align: end;">645 Reviews</p>
-                            </div>
-                        </div>
+                            <x-_rating :rate="$hotel->star_rating" :reviewsCount="$hotel->reviews_count"></x-_rating>
 
 
-                        <x-_hero-carousel></x-_hero-carousel>
-                        <x-_tabs></x-_tabs>
+
+
+                        <x-_hero-carousel :img1="$hotel->thumbnail_url1" :img2="$hotel->thumbnail_url2" :img3="$hotel->thumbnail_url3"></x-_hero-carousel>
+                        <x-_tabs :hotel="$hotel" :rooms="$rooms" :reviews="$reviews"></x-_tabs>
 
 
                     </div>

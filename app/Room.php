@@ -22,4 +22,8 @@ class Room extends Model
     {
         return $this->belongsTo(RoomStatus::class);
     }
+    public function utilities()
+    {
+        return $this->belongsTomany(Utility::class);
+    }
 }

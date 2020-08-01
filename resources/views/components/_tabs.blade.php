@@ -1,4 +1,4 @@
-<div class="single-listing-nav">
+<nav class="single-listing-nav">
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
@@ -13,19 +13,11 @@
         <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
     </li>
 </ul>
-</div>
+</nav>
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
         <div class="overview-content mt-50">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac nibh sed mi ullamcorper
-                rhoncus. Curabitur pulvinar vel augue sit amet vestibulum. Proin tempus lacus porta
-                lorem blandit aliquam eget quis ipsum. Vivamus accumsan consequat ligula non volutpat.
-                Sed mollis orci non cursus vestibulum. Pellentesque vitae est a augue laoreet venenatis
-                sed eu felis. Sed cursus magna nec turpis ullamcorper, eget rutrum felis egestas. Nunc
-                odio ex, fermentum efficitur nunc vitae, efficitur hendrerit diam. Lorem ipsum dolor sit
-                amet, consectetur adipiscing elit. Nam ac nibh sed mi ullamcorper rhoncus. Curabitur
-                pulvinar vel augue sit amet vestibulum. Proin tempus lacus porta lorem blandit aliquam
-                eget quis ipsum.</p>
+            <p>{{$hotel->overview}}</p>
             <div class="row mt-5">
                 <div class="col-6">
                     <label class="custom-control custom-checkbox mb-3">
@@ -88,55 +80,22 @@
     </div>
     <div class="tab-pane fade" id="roomRate" role="tabpanel" aria-labelledby="roomRate-tab">
         <div class="listing-menu-area mt-50">
-            <h4>Menu</h4>
+            <h4>Rooms</h4>
+        @foreach ($rooms as $room)
+
             <!-- Single Listing Menu -->
             <div class="single-listing-menu d-flex justify-content-between">
                 <!-- Listing Menu Title -->
                 <div class="listing-menu-title">
-                    <h6>Classic Burger</h6>
-                    <p>Beef, salad, mustard, bacon, mayonnaise, spicey relish, cheese</p>
+                    <h6>{{$room->name}}</h6>
+                    <p>{{$room->description}}</p>
                 </div>
                 <!-- Listing Menu Price -->
                 <div class="listing-menu-price">
-                    <h6>$9,90</h6>
+                    <h6>${{$room->price}}</h6>
                 </div>
             </div>
-            <!-- Single Listing Menu -->
-            <div class="single-listing-menu d-flex justify-content-between">
-                <!-- Listing Menu Title -->
-                <div class="listing-menu-title">
-                    <h6>House Special Burger</h6>
-                    <p>Beef, salad, mustard, bacon, mayonnaise, spicey relish, cheese</p>
-                </div>
-                <!-- Listing Menu Price -->
-                <div class="listing-menu-price">
-                    <h6>$9,90</h6>
-                </div>
-            </div>
-            <!-- Single Listing Menu -->
-            <div class="single-listing-menu d-flex justify-content-between">
-                <!-- Listing Menu Title -->
-                <div class="listing-menu-title">
-                    <h6>Classic Burger</h6>
-                    <p>Beef, salad, mustard, bacon, mayonnaise, spicey relish, cheese</p>
-                </div>
-                <!-- Listing Menu Price -->
-                <div class="listing-menu-price">
-                    <h6>$9,90</h6>
-                </div>
-            </div>
-            <!-- Single Listing Menu -->
-            <div class="single-listing-menu d-flex justify-content-between">
-                <!-- Listing Menu Title -->
-                <div class="listing-menu-title">
-                    <h6>House Special Burger</h6>
-                    <p>Beef, salad, mustard, bacon, mayonnaise, spicey relish, cheese</p>
-                </div>
-                <!-- Listing Menu Price -->
-                <div class="listing-menu-price">
-                    <h6>$9,90</h6>
-                </div>
-            </div>
+            @endforeach
             <a href="#" class="btn dorne-btn mt-50">+ See The Menu</a>
         </div>
     </div>
@@ -152,56 +111,25 @@
         <div class="listing-reviews-area mt-50" role="tabpanel" aria-labelledby="reviews-tab"
              id="review">
             <h4>reviews</h4>
-            <div class="single-review-area">
+
+            @foreach ($reviews as $review)
+                <div class="single-review-area">
                 <div class="reviewer-meta d-flex align-items-center">
-                    <img src="{{asset('frontend')}}/img/clients-img/1.jpg" alt="">
+                    <img src="{{$review->user->avatar}}" alt="">
                     <div class="reviewer-content">
                         <div class="review-title-ratings d-flex justify-content-between">
-                            <h5>“The best Burger in town”</h5>
-                            <div class="ratings">
-                                <img src="{{asset('frontend')}}/img/clients-img/star-fill.png" alt="">
-                                <img src="{{asset('frontend')}}/img/clients-img/star-fill.png" alt="">
-                                <img src="{{asset('frontend')}}/img/clients-img/star-fill.png" alt="">
-                                <img src="{{asset('frontend')}}/img/clients-img/star-fill.png" alt="">
-                                <img src="{{asset('frontend')}}/img/clients-img/star-fill.png" alt="">
-                            </div>
+                            <h4 class="mb-2">{{$review->header}}</h4>
+                            <x-_rating :rate="$review->star_rating"></x-_rating>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac nibh sed mi
-                            ullamcorper rhoncus. Curabitur pulvinar vel augue sit amet vestibulum. Proin
-                            tempus lacus porta lorem blandit aliquam eget quis ipsum. Vivamus accumsan
-                            consequat ligula non volutpat.</p>
+                        <p>{{$review->review}}</p>
                     </div>
                 </div>
                 <div class="reviewer-name">
-                    <h6>Christinne Smith</h6>
-                    <p>12 November 2017</p>
+                    <h6>{{$review->user->name}}</h6>
+                    <p>{{$review->created_at}}</p>
                 </div>
             </div>
-            <div class="single-review-area">
-                <div class="reviewer-meta d-flex align-items-center">
-                    <img src="{{asset('frontend')}}/img/clients-img/1.jpg" alt="">
-                    <div class="reviewer-content">
-                        <div class="review-title-ratings d-flex justify-content-between">
-                            <h5>“Quality ingredients”</h5>
-                            <div class="ratings">
-                                <img src="{{asset('frontend')}}/img/clients-img/star-fill.png" alt="">
-                                <img src="{{asset('frontend')}}/img/clients-img/star-fill.png" alt="">
-                                <img src="{{asset('frontend')}}/img/clients-img/star-fill.png" alt="">
-                                <img src="{{asset('frontend')}}/img/clients-img/star-fill.png" alt="">
-                                <img src="{{asset('frontend')}}/img/clients-img/star-unfill.png" alt="">
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac nibh sed mi
-                            ullamcorper rhoncus. Curabitur pulvinar vel augue sit amet vestibulum. Proin
-                            tempus lacus porta lorem blandit aliquam eget quis ipsum. Vivamus accumsan
-                            consequat ligula non volutpat.</p>
-                    </div>
-                </div>
-                <div class="reviewer-name">
-                    <h6>Michael Brown</h6>
-                    <p>12 November 2017</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>

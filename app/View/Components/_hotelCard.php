@@ -6,18 +6,15 @@ use Illuminate\View\Component;
 
 class _hotelCard extends Component
 {
-    public $hotel_name;
-    public $hotel_destination;
+    public $hotel;
     /**
      * Create a new component instance.
      *
-     * @param $hotel_name
-     * @param $hotel_destination
+     * @param $hotel
      */
-    public function __construct( $hotel_name, $hotel_destination)
+    public function __construct( $hotel)
     {
-        $this->hotel_name=$hotel_name;
-        $this->hotel_destination=$hotel_destination;
+        $this->hotel=$hotel;
 
     }
 

@@ -21,7 +21,7 @@
                         <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
                             <h6 >What are you looking for?</h6>
 
-                            <form action="/searchresults" method="get">
+                            <form action="/search-results" method="get">
                                 @csrf
                                 <input type="hidden" name="dest_id" id="dest_id" />
 
@@ -117,6 +117,11 @@
 
 <script>
     $(document).ready(function() {
+        var today= new Date();
+        $("#checkIn").change(function () {
+            $("#checkOut").attr("min",$("#checkIn").val() )
+
+        })
        $( "#search" ).autocomplete({
 
            source: function(request, response) {

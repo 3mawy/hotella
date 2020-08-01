@@ -21,6 +21,7 @@ class CreateBookingsTable extends Migration
             $table->date('date_to');
             $table->bigInteger('room_count');
             $table->bigInteger('booking_status_id');
+            $table->bigInteger('price');
             $table->softDeletes();
             $table->timestamps();
         });

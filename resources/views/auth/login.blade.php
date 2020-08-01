@@ -1,6 +1,10 @@
-@extends('layouts.app')
-
+@extends('layouts.master')
 @section('content')
+
+    <!-- ***** breadcumb area start ***** -->
+    <x-_breadcrumb/>
+    <!-- ***** breadcumb area end ***** -->
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

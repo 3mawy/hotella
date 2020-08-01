@@ -23,7 +23,7 @@
     <title>Hotella</title>
 
     <!-- icons -->
-    <link rel="icon" href="{{asset('frontend')}}/img/core-img/favicon.ico">
+    <link rel="icon" href="{{asset('frontend')}}/img/core-img/logo2.png">
     <script src="https://kit.fontawesome.com/8251d93d05.js" crossorigin="anonymous"></script>    <!-- Core Stylesheet -->
     <link href="{{asset('frontend')}}/style.css" rel="stylesheet">
 

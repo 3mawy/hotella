@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Hotel;
 use App\Rate;
 use Illuminate\Http\Request;
 
@@ -44,9 +45,10 @@ class RateController extends Controller
      * @param  \App\Rate  $rate
      * @return \Illuminate\Http\Response
      */
-    public function show(Rate $rate)
+    public function show($id)
     {
-        //
+        $hotel = Hotel::where('id',$id)->first();
+        return $hotel->star_rating;
     }
 
     /**

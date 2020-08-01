@@ -8,6 +8,26 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+
+import { Form, HasError, AlertError } from 'vform';
+window.Form= Form;
+Vue.component(HasError.name, HasError)
+Vue.component(AlertError.name, AlertError)
+////////////
+import VueRouter from "vue-router";
+Vue.use(VueRouter)
+let routes = [
+    { path: '/overview', component: require('./components/tabs/OverView.vue').default },
+    { path: '/rooms', component: require('./components/tabs/RoomsRate.vue').default },
+    { path: '/map', component: require('./components/tabs/Map.vue').default },
+    { path: '/reviews', component: require('./components/tabs/Reviews.vue').default },
+
+];
+const router = new VueRouter({
+    mode:'history',
+    routes, // short for `routes: routes`
+    linkActiveClass: 'active'
+})
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -20,6 +40,9 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+/*
+Vue.component('add-listing', require('./components/tabs/AddListing.vue').default);
+*/
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

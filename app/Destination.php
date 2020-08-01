@@ -24,4 +24,8 @@ class Destination extends Model
     {
         return $this->where('name', 'LIKE', '%' . $name . '%')->take(3)->get();
     }
+    public function hotels()
+    {
+        return $this->hasMany(Hotel::class);
+    }
 }

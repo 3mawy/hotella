@@ -251,9 +251,19 @@ color: white;
 
 @media (min-width: 320px) and (max-width: 779px) {
 
+    .ratings{
+        padding-top: 2rem;
+    }
+    .listing-title{
+        width: 21.2rem;
+    }
+    .pagination-fix{
+        padding-top: 55vh;
+        padding-left: 17vh;
+        padding-bottom: 2vh;
+    }
     .search-result {
 
-        text-align: center;
     }
     .header_area {
         padding: 0;

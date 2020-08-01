@@ -20,7 +20,7 @@
 
 #preloader {
     overflow: hidden;
-    background-color: rgb(220, 144, 93);
+    background-color: rgba(220, 144, 93, 0.96);
     height: 100%;
     left: 0;
     position: fixed;
@@ -44,8 +44,8 @@
     left: 50%;
     border-radius: 50%;
     overflow: hidden;
-    -webkit-animation: 4000ms linear 0s normal none infinite running dorneload;
-            animation: 4000ms linear 0s normal none infinite running dorneload;
+    -webkit-animation: 3000ms linear 0s normal none infinite running dorneload;
+            animation: 3000ms linear 0s normal none infinite running dorneload;
 }
 
 @-webkit-keyframes dorneload {
@@ -68,6 +68,12 @@
         -webkit-transform: rotate(360deg);
                 transform: rotate(360deg);
     }
+}
+.loaded #preloader {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+    transition: all 0.3s 1s ease-out;
 }
 
 body {
@@ -309,7 +315,7 @@ li {
     font-size: 18px;
     right: 0;
     width: 40px;
-    background-color: #341a79;
+    background-color: #f18d4c;
     color: #fff;
     text-align: center;
     height: 40px;
@@ -342,7 +348,7 @@ li {
 }
 
 .bg-overlay-9:after {
-    background-color: rgba(14, 2, 35, 0.9);
+    background-color: rgba(23, 12, 5, 0.65);
 }
 
 .bg-gray {
@@ -350,7 +356,7 @@ li {
 }
 
 .bg-default {
-    background-color: #341a79;
+    background-color: #ef8c4b;
 }
 
 .dorne-btn {
@@ -460,7 +466,7 @@ li {
 }
 
 .sticky .header_area {
-    background-color: rgba(104, 58, 29, 0.92);
+    background-color: rgba(100, 68, 48, 0.92);
     height: 97px;
     z-index: 9999;
     border-bottom: 1px solid transparent;
@@ -735,7 +741,7 @@ li {
     height: 70px;
     display: inline-block;
     line-height: 70px;
-    background-color: #7643ea;
+    background-color: #f18d4c;
     padding: 0 50px;
     font-size: 14px;
     text-transform: uppercase;
@@ -1410,12 +1416,13 @@ li {
     height: 73px !important;
     border-radius: 50%;
     margin-right: 20px;
+    object-fit: cover;
 }
 
 .review-title-ratings h5 {
     font-style: italic;
     font-size: 18px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .single-review-area {
@@ -1429,7 +1436,7 @@ li {
 
 .reviewer-name {
     padding-left: 93px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .reviewer-name p {

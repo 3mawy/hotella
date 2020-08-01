@@ -33,7 +33,7 @@ class AutoCompleteController extends Controller
 
         if ($destinations->isEmpty()) {
 
-            $destinations =  $rapidApiService->AutoCompleteProxy($search);
+            $destinations =  $rapidApiService->AutoCompleteHotelsApi($search);
         }
 
         return response()->json($destinations);
