@@ -103,7 +103,7 @@
         <div class="location-on-map mt-50">
             <h4>Location on map</h4>
             <div class="location-map">
-                <div id="locationMap"></div>
+                <div id="map"></div>
             </div>
         </div>
     </div>
@@ -119,7 +119,7 @@
                     <div class="reviewer-content">
                         <div class="review-title-ratings d-flex justify-content-between">
                             <h4 class="mb-2">{{$review->header}}</h4>
-                            <x-_rating :rate="$review->star_rating"></x-_rating>
+                            <x-_rating style="padding-top: 220px" :rate="$review->star_rating"></x-_rating>
                         </div>
                         <p>{{$review->review}}</p>
                     </div>
@@ -134,3 +134,22 @@
     </div>
 </div>
 
+<script>
+    "use strict";
+
+    function initMap() {
+        const myLatLng = {
+            lat: -25.363,
+            lng: 131.044
+        };
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 4,
+            center: myLatLng
+        });
+        new google.maps.Marker({
+            position: myLatLng,
+            map,
+            title: "Hello World!"
+        });
+    }
+</script>

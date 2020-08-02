@@ -1319,9 +1319,12 @@ li {
 .listing-title {
     margin-bottom: 5px;
 }
-.ratings{
-    margin-bottom: 10px;
+.ratingsfix2{
+
+}
+.ratingsfix{
     position: absolute;
+    margin-bottom: 10px;
     right: 15px;
     top: 4px;
 }

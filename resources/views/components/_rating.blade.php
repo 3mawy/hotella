@@ -9,7 +9,5 @@
             @endif
         @endfor
     </div>
-    <div>
-        <p style="text-align: end;">{{$reviewsCount ?? ''}} Reviews</p>
-    </div>
+
 </div>

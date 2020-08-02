@@ -18,8 +18,11 @@
                             <h6>{{$destination}}</h6>
 
                         </div>
-                            <x-_rating :rate="$hotel->star_rating" :reviewsCount="$hotel->reviews_count"></x-_rating>
-
+                           <div class="ratingsfix" > <x-_rating  :rate="$hotel->star_rating" :reviewsCount="$hotel->reviews_count"></x-_rating>
+                               <div>
+                                   <p style="text-align: end;">{{$hotel->reviews_count ?? ''}} Reviews</p>
+                               </div>
+                           </div>
 
 
 
