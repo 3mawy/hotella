@@ -24,6 +24,6 @@ class Room extends Model
     }
     public function utilities()
     {
-        return $this->belongsTomany(Utility::class);
+        return $this->belongsTomany(Utility::class, 'room_utility');
     }
 }
