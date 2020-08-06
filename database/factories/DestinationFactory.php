@@ -10,7 +10,7 @@ $factory->define(Destination::class, function (Faker $faker) {
         'name' => $faker->unique()->country,
         'longitude' => $faker->longitude,
         'latitude' => $faker->latitude,
-        'zipcode' =>Str::random(5),
+        'zipcode' =>$faker->postcode,
         'dummy' =>$faker->sentence(),
 
     ];
