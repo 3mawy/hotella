@@ -38,9 +38,9 @@ class SearchController extends Controller
     {
         $this->validate($request, [
             'search' => 'required',
-            'checkIn' => 'required|date',
+            /*'checkIn' => 'required|date',
             'checkOut' => 'required|date',
-            'adults' => 'required',
+            'adults' => 'required',*/
         ]);
         $search = $request->get('search');
         $checkIn = $request->get('checkIn');

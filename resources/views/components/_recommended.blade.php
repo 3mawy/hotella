@@ -17,8 +17,8 @@
                     <img src="{{asset('frontend')}}/img/bg-img/alex.jpg" alt="">
                     <div class="editors-pick-info">
                         <div class="places-total-destinations d-flex">
-                            <a href="#">Alexandria</a>
-                            <a href="#">120 Destinations</a>
+                            <a href="/search-results?dest_id=5555&search=Alexandria">Alexandria</a>
+                            <a href="/search-results?dest_id=5555&search=Alexandria">120 Destinations</a>
                         </div>
                     </div>
                 </div>
@@ -26,8 +26,8 @@
                     <img src="{{asset('frontend')}}/img/bg-img/luxor.jpg" alt="">
                     <div class="editors-pick-info">
                         <div class="places-total-destinations d-flex">
-                            <a href="#">Luxor</a>
-                            <a href="#">148 Destinations</a>
+                            <a href="/search-results?dest_id=1439028&search=Luxor">Luxor</a>
+                            <a href="/search-results?dest_id=1439028&search=Luxor">148 Destinations</a>
                         </div>
                     </div>
                 </div>
@@ -37,8 +37,8 @@
                     <img src="{{asset('frontend')}}/img/bg-img/cairo.jpg" alt="">
                     <div class="editors-pick-info">
                         <div class="places-total-destinations d-flex">
-                            <a href="#">Cairo</a>
-                            <a href="#">943 Destinations</a>
+                            <a href="/search-results?dest_id=1634358&search=Cairo">Cairo</a>
+                            <a href="/search-results?dest_id=1634358&search=Cairo">443 Destinations</a>
                         </div>
                     </div>
                 </div>
@@ -46,8 +46,8 @@
                     <img src="{{asset('frontend')}}/img/bg-img/sharm.jpg" alt="">
                     <div class="editors-pick-info">
                         <div class="places-total-destinations d-flex">
-                            <a href="#">Sharm El Sheikh</a>
-                            <a href="#">243 Destinations</a>
+                            <a href="/search-results?dest_id=1634620&search=SharmElSheikh">Sharm El Sheikh</a>
+                            <a href="/search-results?dest_id=1634620&search=SharmElSheikh">243 Destinations</a>
                         </div>
                     </div>
                 </div>

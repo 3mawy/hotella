@@ -46,7 +46,7 @@
         padding: 50px 50px;
         min-height: 100%;
     }
-    #dorneNav{
+    .dorneNav{
     }
     #sidebarCollapse{
         visibility: hidden;
@@ -134,10 +134,10 @@
         margin: 17px 0
     }
 
-    #dorneNav {
+    .dorneNav {
         position: inherit;
         padding: 20px;
-        background-color: #341a79;
+        background-color: #593f2f !important;
         box-shadow: 1px 9px 10px rgba(255, 255, 255, 0.15);
         border-radius: 0 0 3px 3px
     }
@@ -285,9 +285,9 @@ color: white;
         margin: 17px 0
     }
 
-    #dorneNav {
+    .dorneNav {
         padding: 15px;
-        background-color: #341a79;
+        background-color: #593f2f !important;
         box-shadow: 1px 9px 10px rgba(255, 255, 255, 0.15);
         border-radius: 0 0 3px 3px
     }
@@ -546,5 +546,8 @@ color: white;
     #sidebarCollapse{
         width: 100%;
         text-align: center;
+    }
+    .FixDestHeader{
+        margin-left: .5rem !important;
     }
 }

@@ -19,7 +19,10 @@ class CreateRoomsTable extends Migration
             $table->string('floor');
             $table->foreignId('room_type_id');
             $table->bigInteger('room_number');
+            $table->string('name');
             $table->bigInteger('description');
+            $table->bigInteger('price');
+            $table->string('img');
             $table->foreignId('room_status_id');
             $table->softDeletes();
             $table->timestamps();

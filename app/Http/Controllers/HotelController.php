@@ -6,6 +6,7 @@ use App\Destination;
 use App\Hotel;
 use App\Review;
 use App\Room;
+use App\Utility;
 use Illuminate\Http\Request;
 
 class HotelController extends Controller
@@ -17,6 +18,8 @@ class HotelController extends Controller
      */
     public function index()
     {
+        $hotels = Hotel::paginate(10);
+        return view('search', ['hotels' => $hotels]);
     }
 
     /**

@@ -77,10 +77,7 @@
     <script src="{{asset('frontend')}}/js/bootstrap/bootstrap.min.js"></script>
     <!-- All Plugins js -->
     <script src="{{asset('frontend')}}/js/others/plugins.js"></script>
-    <!-- Google Maps js -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk9KNSL1jTv4MY9Pza6w8DJkpI_nHyCnk"></script>
-    <script src="{{asset('frontend')}}/js/google-map/explore-map-active.js"></script>
-    <!-- Active JS -->
+     <!-- Active JS -->
     <script src="{{asset('frontend')}}/js/active.js"></script>
 
     @yield('scripts');

@@ -10,9 +10,6 @@
                             <option selected>Sort by</option>
                             <option value="1">Price</option>
                             <option value="2">Rating</option>
-                            <option value="3">Recommended</option>
-                            <option value="4">Melbourne</option>
-                            <option value="5">London</option>
                         </select>
                         <select class="custom-select" id="categories">
                             <option selected>All Categories</option>

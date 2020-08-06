@@ -43,7 +43,7 @@
                                 Listing</a>
                         </div>
 
-                        <!-- Book A Table Widget -->
+                        <!-- Book A Table Widget
                         <div class="book-a-table-widget mt-50">
                             <h6>Book A Table</h6>
                             <form action="#" method="get">
@@ -66,7 +66,7 @@
                                 </button>
                             </form>
                         </div>
-
+-->
                         <!-- Opening Hours Widget -->
                         <div class="opening-hours-widget mt-50">
                             <h6>Opening Hours</h6>

@@ -19,6 +19,7 @@ class CreateHotelsTable extends Migration
             $table->string('name');
             $table->smallInteger('star_rating');
             $table->string('motto');
+            $table->string('overview');
             $table->string('address');
             $table->string('longitude');
             $table->string('latitude');
@@ -27,6 +28,10 @@ class CreateHotelsTable extends Migration
             $table->smallInteger('zipcode');
             $table->bigInteger('phone_number');
             $table->string('thumbnail_url');
+            $table->string('thumbnail_url1');
+            $table->string('thumbnail_url2');
+            $table->string('thumbnail_url3');
+            $table->string('reviews_count');
             $table->softDeletes();
             $table->timestamps();
         });

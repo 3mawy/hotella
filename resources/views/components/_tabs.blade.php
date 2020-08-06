@@ -19,84 +19,42 @@
         <div class="overview-content mt-50">
             <p>{{$hotel->overview}}</p>
             <div class="row mt-5">
+                @foreach ($hotel->utilities as $utility)
                 <div class="col-6">
                     <label class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">Accepts Credit Cards</span>
+                        <i class="{{$utility->icon}} pr-2"></i>
+                        <span class="custom-control-description ">{{$utility->name}}</span>
                     </label>
                 </div>
-                <div class="col-6">
-                    <label class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator checked"></span>
-                        <span class="custom-control-description">Bike Parking</span>
-                    </label>
-                </div>
-                <div class="col-6">
-                    <label class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">Wireless Internet</span>
-                    </label>
-                </div>
-                <div class="col-6">
-                    <label class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">Reservations</span>
-                    </label>
-                </div>
-                <div class="col-6">
-                    <label class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">Privat Parking</span>
-                    </label>
-                </div>
-                <div class="col-6">
-                    <label class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">Smoking Area</span>
-                    </label>
-                </div>
-                <div class="col-6">
-                    <label class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">Wheelchair Accesible</span>
-                    </label>
-                </div>
-                <div class="col-6">
-                    <label class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">Coupons</span>
-                    </label>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </div>
     <div class="tab-pane fade" id="roomRate" role="tabpanel" aria-labelledby="roomRate-tab">
         <div class="listing-menu-area mt-50">
-            <h4>Rooms</h4>
-        @foreach ($rooms as $room)
-
-            <!-- Single Listing Menu -->
-            <div class="single-listing-menu d-flex justify-content-between">
-                <!-- Listing Menu Title -->
-                <div class="listing-menu-title">
-                    <h6>{{$room->name}}</h6>
-                    <p>{{$room->description}}</p>
+            <h4 style="margin-bottom: 25px;">Rooms</h4>
+            @foreach ($rooms as $room)
+                <div class="row single-listing-menu ">
+                    <div class="col-sm-4 col-12">
+                        <img style="height: 130px; object-fit: cover" src="{{$room->img}}" alt="room img">
+                    </div>
+                    <div class="col-sm-5 pt-3 col-12">
+                        <div class="listing-menu-title">
+                            <h6>{{$room->name}}</h6>
+                            <p class="pt-1">{{$room->description}}</p>
+                        </div>
+                        <div class="listing-menu-price pt-3">
+                            <h6>${{$room->price}}</h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-12">
+                        <a  class="btn dorne-btn mt-30" data-toggle="modal" data-target="#bookRoom">Book Now!</a>
+                    </div>
                 </div>
-                <!-- Listing Menu Price -->
-                <div class="listing-menu-price">
-                    <h6>${{$room->price}}</h6>
-                </div>
-            </div>
             @endforeach
-            <a href="#" class="btn dorne-btn mt-50">+ See The Menu</a>
+            <x-_book-modal></x-_book-modal>
+
         </div>
     </div>
     <div class="tab-pane fade" id="map" role="tabpanel" aria-labelledby="map-tab">
@@ -134,7 +92,15 @@
     </div>
 </div>
 
-<script>
+@section('scripts')
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF2ef9NUXeaomH9IKtR1rcYQiquZ8GOwM&callback=initMap&libraries=&v=weekly"
+        defer
+    ></script>
+
+    <script>
     "use strict";
 
     function initMap() {
@@ -153,3 +119,4 @@
         });
     }
 </script>
+@endsection

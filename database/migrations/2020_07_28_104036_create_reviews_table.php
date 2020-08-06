@@ -19,6 +19,7 @@ class CreateReviewsTable extends Migration
             $table->foreignId('user_id');
             $table->string('header');
             $table->string('review');
+            $table->integer('star_rating');
             $table->timestamps();
         });
     }

@@ -11,11 +11,12 @@
                     <h5>{{$hotel->name}}</h5>
                     <h6>{{$hotel->price}}</h6>
 
-                    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra...</p>
+                    <p>{{$hotel->motto}}</p>
                 </div>
             </div>
-            <x-_rating :rate="$hotel->star_rating" :reviewsCount="$hotel->reviews_count" />
-
+            <div class="ratingsfix">
+                <x-_rating :rate="$hotel->star_rating" :reviewsCount="$hotel->reviews_count" />
+            </div>
             {{--<div class="row">
                 <div class="favorite-btn ">
                     <a href="#"><i class="fa fa-heart-o" ></i></a>

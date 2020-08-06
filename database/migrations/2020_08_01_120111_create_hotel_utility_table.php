@@ -13,7 +13,7 @@ class CreateUtilityHotelTable extends Migration
      */
     public function up()
     {
-        Schema::create('utility_hotel', function (Blueprint $table) {
+        Schema::create('hotel_utility', function (Blueprint $table) {
             $table->id();
             $table->foreignId('utility_id');
             $table->foreignId('hotel_id');
@@ -28,6 +28,6 @@ class CreateUtilityHotelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('utility_hotel');
+        Schema::dropIfExists('hotel_utility');
     }
 }
