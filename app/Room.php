@@ -26,4 +26,8 @@ class Room extends Model
     {
         return $this->belongsTomany(Utility::class, 'room_utility');
     }
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class)->latest();
+    }
 }
