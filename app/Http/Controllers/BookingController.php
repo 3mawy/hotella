@@ -35,7 +35,30 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+
+        ]);
+        $booking = new Booking([
+            'hotel_id' => $request->get('hotel_id'),
+            'room_id' => $request->get('room_id'),
+            'user_id' => $request->get('user_id'),
+            'date_from' => $request->get('date_from'),
+            'date_to' => $request->get('date_to'),
+            'price' => $request->get('price'),
+
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
+            'email' => $request->get('email'),
+            'address' => $request->get('address'),
+
+        ]);
+
+        $booking->save();
+        return redirect()->route('home');
     }
 
     /**

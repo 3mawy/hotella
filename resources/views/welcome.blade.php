@@ -25,13 +25,13 @@
 
                             <form action="/search-results" method="get">
                                 @csrf
-                                <input type="hidden" name="dest_id" id="dest_id" />
+                                <input type="hidden" name="dest_id" id="dest_id" required />
 
                                 <div class="flex">
                                     <div class=" ml-0 row">
 
                                         <input id="search" name="search" type="text" class="col-sm-12 col-lg-3 ml-0 mr-0 custom-input form-control" placeholder="Where to!" style="font-size: inherit" />
-                                        <input type="text" name="checkIn"placeholder="Check in" onfocus="(this.type='date')"id="checkIn" class="ah  custom-date col-sm-6 col-lg-1 ml-0 mr-0 " />
+                                        <input type="text" name="checkIn"placeholder="Check in" onfocus="(this.type='date')"id="checkIn" class="ah  custom-date col-sm-6 col-lg-1 ml-0 mr-0 " min="2020-08-10"/>
                                         <input type="text" name="checkOut"placeholder="Check out" onfocus="(this.type='date')"id="checkOut" class="ah  custom-date col-sm-6 col-lg-1 ml-0 mr-0 " />
                                 <select  name="adults" class="ah custom-select col-sm-6 col-lg-1 ml-0 mr-0">
                                     <option selected>adults</option>
@@ -79,7 +79,7 @@
             <div class="col-12">
                 <div class="about-content text-center">
                     <h2>Discover your city with <br><span>Hotella.</span></h2>
-                    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce quis tempus elit. Sed efficitur tortor neque, vitae aliquet urna varius sit amet. Ut rhoncus, nunc nec tincidunt volutpat, ex libero.</p>
+                    <p>Travel around egypt with us to get the best deals. It's  important to choose the right hotel so you can enjoy a comfortable retreat. Excellent booking services and trip planning are guaranteed.</p>
                 </div>
             </div>
         </div>
@@ -93,7 +93,6 @@
 
 <script>
     $(document).ready(function() {
-        var today= new Date();
         $("#checkIn").change(function () {
             $("#checkOut").attr("min",$("#checkIn").val() )
 

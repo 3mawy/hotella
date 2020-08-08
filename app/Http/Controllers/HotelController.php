@@ -40,7 +40,13 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $checkIn = $request->get('checkIn');
+        $checkOut = $request->get('checkOut');
+        session(['reservation' => [
+            'check_in'=>$checkIn,
+            'check_out'=>$checkOut,
+        ]]);
+        return redirect()->back();
     }
 
     /**
@@ -56,6 +62,9 @@ class HotelController extends Controller
         $rooms = Room::where('hotel_id',$hotel->id)->get();
         $reviews = Review::where('hotel_id',$hotel->id)->get();
         return view('hotel', ['hotel' => $hotel, 'destination' => $destination->name, 'rooms' => $rooms, 'reviews' => $reviews]);
+    }
+    public function setReservation(Request $request){
+        dd($request->all());
     }
     /**
      * Show the form for editing the specified resource.

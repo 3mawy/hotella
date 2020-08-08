@@ -40,8 +40,12 @@
                     <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                         <div class="overview-content mt-50">
                             <h4>Personal information</h4>
-                            <div class="row mt-5">
+                            <div class="row mt-3">
                                 <div class="col-6">
+                                    <h6>Name: {{Auth::user()->name}}</h6>
+                                    <h6>Address: {{Auth::user()->address}}</h6>
+                                    <h6>Phone: {{Auth::user()->phone}}</h6>
+                                    <h6>Bookings made: {{Auth::user()->bookings->count()}}</h6>
                                 </div>
                             </div>
                         </div>
@@ -55,17 +59,19 @@
                                 </div>
                                 <div class="col-sm-5 pt-3 col-12">
                                     <div class="listing-menu-title">
-                                        <h6>{{$booking->hotel->name}}</h6>
-                                        <p class="pt-1">55555</p>
+                                        <h6>Hotel Name: {{$booking->hotel->name}}</h6>
                                     </div>
                                     <div class="listing-menu-price pt-3">
-                                        <h6>{{$booking->room->price}}$</h6>
+                                        <h6>Cost: {{$booking->room->price}}$</h6>
                                     </div>
                                     <div class="listing-menu-price pt-3">
-                                        <h6>{{$booking->created_at}}</h6>
+                                        <h6>Created at: {{$booking->created_at}}</h6>
                                     </div>
                                 </div>
-
+                                <div class="col-sm-3 pt-3 col-12">
+                                    <p>Check in: {{$booking->date_from}}</p>
+                                    <p>Check out: {{$booking->date_to}}</p>
+                                </div>
                             </div>
                             @endforeach
                         </div>

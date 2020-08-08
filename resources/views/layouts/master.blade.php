@@ -11,6 +11,12 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF2ef9NUXeaomH9IKtR1rcYQiquZ8GOwM&callback=initMap&libraries=&v=weekly"
+        defer
+    ></script>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

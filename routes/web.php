@@ -25,8 +25,10 @@ Route::get('search-results', 'SearchController@index')->name('search.index');
 Route::get('search-results/{hotel}', 'SearchController@show')->name('search.show');
 Route::get('hotels', 'HotelController@index')->name('hotel.index');
 Route::get('hotels/{hotel}', 'HotelController@show')->name('hotel.show');
+Route::post('hotels/{hotel}', 'HotelController@store')->name('hotel.store');
 Route::get('contacts/create', 'ContactController@create')->name('contacts.create');
 Route::post('contacts', 'ContactController@store')->name('contacts.store');
+Route::post('bookings', 'BookingController@store')->name('bookings.store');
 /*Route::get('/{any}','HotelTabsController@index')->where(' any', '.*');*/
 //Route::get('test',' AutocompleteController@search');
 //Route::get('search', 'AutocompleteController@index');
