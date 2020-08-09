@@ -7,7 +7,7 @@
         <a class="nav-link" id="roomRate-tab" data-toggle="tab" href="#roomRate" role="tab" aria-controls="roomRate" aria-selected="false">Room Rate</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="map-tab" data-toggle="tab" href="#map" role="tab" aria-controls="map" aria-selected="false">Map</a>
+        <a class="nav-link" id="map-tab" data-toggle="tab" href="#map-id" role="tab" aria-controls="map-id" aria-selected="false">Map</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
@@ -60,11 +60,11 @@
             @endforeach
         </div>
     </div>
-    <div class="tab-pane fade" id="map" role="tabpanel" aria-labelledby="map-tab">
-        <div class="location-on-map mt-50">
+    <div class="tab-pane fade" id="map-id" role="tabpanel" aria-labelledby="map-tab">
+        <div class="">
             <h4>Location on map</h4>
-            <div class="location-map">
-                <div id="map"></div>
+            <div class="">
+                <div id="map" style="height: 25rem;"></div>
             </div>
         </div>
     </div>
@@ -113,8 +113,8 @@
             })
             function initMap() {
                 const myLatLng = {
-                    lat: -25.363,
-                    lng: 131.044
+                    lat: 25.687243,
+                    lng: 32.639637
                 };
                 const map = new google.maps.Map(document.getElementById("map"), {
                     zoom: 4,
