@@ -12,7 +12,7 @@ class Hotel extends Model
     }
     public function rooms()
     {
-        return $this->hasMany(Room::class)->latest();
+        return $this->hasMany(Room::class);
     }
     public function destination()
     {
@@ -24,7 +24,7 @@ class Hotel extends Model
     }
     public function utilities()
     {
-        return $this->belongsTomany(Utility::class);
+        return $this->belongsTomany(Utility::class, 'hotel_utility');
     }
 
 

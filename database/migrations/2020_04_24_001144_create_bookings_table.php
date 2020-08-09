@@ -20,10 +20,14 @@ class CreateBookingsTable extends Migration
             $table->foreignId('user_id');
             $table->date('date_from');
             $table->date('date_to');
-            $table->bigInteger('room_count');
-            $table->bigInteger('booking_status_id');
-            $table->bigInteger('price');
-            $table->bigInteger('total');
+            $table->integer('room_count')->nullable();
+            $table->integer('booking_status_id')->nullable();
+            $table->integer('price');
+            $table->integer('total')->nullable();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('address');
+            $table->string('email');
             $table->softDeletes();
             $table->timestamps();
         });

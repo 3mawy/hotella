@@ -20,7 +20,7 @@
                         </div>
                            <div class="ratingsfix" > <x-_rating  :rate="$hotel->star_rating" :reviewsCount="$hotel->reviews_count"></x-_rating>
                                <div>
-                                   <p style="text-align: end;">{{$hotel->reviews_count ?? ''}} Reviews</p>
+                                   <p style="text-align: end;">{{$hotel->reviews->count() ?? '0'}} Reviews</p>
                                </div>
                            </div>
 
@@ -43,78 +43,28 @@
                                 Listing</a>
                         </div>
 
-                        <!-- Book A Table Widget
-                        <div class="book-a-table-widget mt-50">
-                            <h6>Book A Table</h6>
-                            <form action="#" method="get">
-                                <select class="custom-select" id="destinations">
-                                    <option selected>Who will be arriving</option>
-                                    <option value="1">New York</option>
-                                    <option value="2">Latvia</option>
-                                    <option value="3">Dhaka</option>
-                                    <option value="4">Melbourne</option>
-                                    <option value="5">London</option>
-                                </select>
-                                <select class="custom-select" id="catagories">
-                                    <option selected>Guest 1</option>
-                                    <option value="1">Guest 2</option>
-                                    <option value="3">Guest 3</option>
-                                    <option value="3">Guest 4</option>
-                                </select>
-                                <button type="submit" class="btn dorne-btn"><i class="fa fa-search pr-2"
-                                                                               aria-hidden="true"></i> Search
-                                </button>
-                            </form>
-                        </div>
--->
                         <!-- Opening Hours Widget -->
                         <div class="opening-hours-widget mt-50">
-                            <h6>Opening Hours</h6>
-                            <ul class="opening-hours">
-                                <li>
-                                    <p>Monday</p>
-                                    <p>Closed</p>
-                                </li>
-                                <li>
-                                    <p>Tuesday</p>
-                                    <p>9 AM - 1 PM</p>
-                                </li>
-                                <li>
-                                    <p>Wednesday</p>
-                                    <p>9 AM - 1 PM</p>
-                                </li>
-                                <li>
-                                    <p>Thursday</p>
-                                    <p>9 AM - 1 PM</p>
-                                </li>
-                                <li>
-                                    <p>Friday</p>
-                                    <p>9 AM - 1 PM</p>
-                                </li>
-                                <li>
-                                    <p>Saturday</p>
-                                    <p>9 AM - 1 PM</p>
-                                </li>
-                                <li>
-                                    <p>Sunday</p>
-                                    <p>9 AM - 1 PM</p>
-                                </li>
-                            </ul>
-                        </div>
+                            <form action="{{url()->current()}}" method="post">
+                                @csrf
+                                <div class="flex ">
+                                    <h5>select date</h5>
+                                    <div class="row">
+                                        <input type="text" name="checkIn"placeholder="Check in" onfocus="(this.type='date')"id="checkIn" class="ah  custom-date col-sm-6   mr-0 " min="2020-08-10"/>
+                                        <input type="text" name="checkOut"placeholder="Check out" onfocus="(this.type='date')"id="checkOut" class="ah  custom-date col-sm-6   mr-0 " />
+                                        <br class="p-1">
+                                        <button type="submit" class="btn dorne-btn " style="width: 100%; margin-top: 1rem;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+                                    </div>
+                                </div>
+                            </form>
 
-                        <!-- Author Widget -->
-                        <div class="author-widget mt-50 d-flex align-items-center">
-                            <img src="{{asset('frontend')}}/img/clients-img/1.jpg" alt="">
-                            <div class="authors-name">
-                                <a href="#">James Smith</a>
-                                <p>The Author</p>
-                            </div>
                         </div>
 
                         <!-- Contact Form -->
                         <div class="contact-form contact-form-widget mt-50">
-                            <h6>Contact Business</h6>
-                            <form action="#">
+                            <h6>Contact Us</h6>
+                            <form method="post" action="{{ route('contacts.store') }}">
+                                @csrf
                                 <div class="row">
                                     <div class="col-12">
                                         <input type="text" name="name" class="form-control" placeholder="Your Name">
@@ -122,6 +72,9 @@
                                     <div class="col-12">
                                         <input type="email" name="email" class="form-control"
                                                placeholder="Email Address">
+                                    </div>
+                                    <div class="col-12">
+                                        <input type="text" name="subject" class="form-control" placeholder="Subject">
                                     </div>
                                     <div class="col-12">
                                         <textarea name="message" class="form-control" id="Message" cols="30" rows="10"
@@ -140,4 +93,14 @@
         </div>
     </section>
 
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $("#checkIn").change(function () {
+                $("#checkOut").attr("min",$("#checkIn").val() )
+
+            })
+        });
+    </script>
 @endsection

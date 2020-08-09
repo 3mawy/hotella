@@ -6,6 +6,7 @@ use App\Destination;
 use App\Hotel;
 use App\Services\RapidApiService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SearchController extends Controller
 {
@@ -34,7 +35,7 @@ class SearchController extends Controller
         $hotels=$rapidApiService->listProperties($destinationId, $checkIn, $checkOut, $adults, $children);
                return view('search', ['hotels' => $hotels]);
     }*/
-    public function index(Request $request, Destination $destination,RapidApiService $rapidApiService)
+    public function index(Request $request,RapidApiService $rapidApiService)
     {
         $this->validate($request, [
             'search' => 'required',
@@ -48,8 +49,24 @@ class SearchController extends Controller
         $adults = $request->get('adults');
         $children = $request->input('children');
         $destinationId = $request->get('dest_id');
-        $hotels = Hotel::where('destination_id',$destinationId)->paginate(10);
+        $sort = $request->get('sort', 0);
+        $hotels = Hotel::where('destination_id',$destinationId);
+        switch ($sort){
+            case 'name':{
+                $hotels=$hotels->orderBy('name');
+            }
+            case 'rating':{
+                $hotels=$hotels->orderBy('star_rating');
+
+            }
+        }
+        $hotels=$hotels->paginate(10);
         $destination = Destination::where('destination_id',$destinationId)->first();
+        session(['reservation' => [
+            'check_in'=>$checkIn,
+            'check_out'=>$checkOut,
+            'adults'=>$adults,
+        ]]);
         return view('search', ['hotels' => $hotels, 'destination' => $destination->name]);
     }
     public function show(/*$hotel*//*Request $request,*/ RapidApiService $rapidApiService, $id)

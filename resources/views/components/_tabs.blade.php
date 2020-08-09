@@ -7,7 +7,7 @@
         <a class="nav-link" id="roomRate-tab" data-toggle="tab" href="#roomRate" role="tab" aria-controls="roomRate" aria-selected="false">Room Rate</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="map-tab" data-toggle="tab" href="#map" role="tab" aria-controls="map" aria-selected="false">Map</a>
+        <a class="nav-link" id="map-tab" data-toggle="tab" href="#map-id" role="tab" aria-controls="map-id" aria-selected="false">Map</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
@@ -49,19 +49,22 @@
                         </div>
                     </div>
                     <div class="col-sm-2 col-12">
-                        <a  class="btn dorne-btn mt-30" data-toggle="modal" data-target="#bookRoom">Book Now!</a>
+                        @if($room->getAvailableRooms()>0)
+                        <a class="book-now btn dorne-btn mt-30" data-toggle="modal" data-room_id="{{$room->id}}" {{--data-target="#bookRoom_{{$room->id}}"--}}>Book Now!</a>
+                        @else
+                            <strong>No available rooms</strong>
+                        @endif
                     </div>
                 </div>
+                <x-_book-modal :room="$room" ></x-_book-modal>
             @endforeach
-            <x-_book-modal></x-_book-modal>
-
         </div>
     </div>
-    <div class="tab-pane fade" id="map" role="tabpanel" aria-labelledby="map-tab">
-        <div class="location-on-map mt-50">
+    <div class="tab-pane fade" id="map-id" role="tabpanel" aria-labelledby="map-tab">
+        <div class="">
             <h4>Location on map</h4>
-            <div class="location-map">
-                <div id="map"></div>
+            <div class="">
+                <div id="map" style="height: 25rem;"></div>
             </div>
         </div>
     </div>
@@ -93,30 +96,42 @@
 </div>
 
 @section('scripts')
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF2ef9NUXeaomH9IKtR1rcYQiquZ8GOwM&callback=initMap&libraries=&v=weekly"
-        defer
-    ></script>
-
     <script>
-    "use strict";
+        $(document).ready(function() {
+            $('.book-now').click(function () {
+                let roomId = $(this).data('room_id');
+                let date_from = $(`#bookRoom_${roomId} > div > div > div > div > div > div > div > form > input[name="date_from"]`).val();
+                let date_to = $(`#bookRoom_${roomId} > div > div > div > div > div > div > div > form > input[name="date_to"]`).val();
 
-    function initMap() {
-        const myLatLng = {
-            lat: -25.363,
-            lng: 131.044
-        };
-        const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 4,
-            center: myLatLng
-        });
-        new google.maps.Marker({
-            position: myLatLng,
-            map,
-            title: "Hello World!"
-        });
-    }
-</script>
+                if (date_from == "" || date_to == ""){
+                    alert("please select your travel dates");
+                    $('.opening-hours-widget')[0].scrollIntoView(false);
+                    return;
+                }
+                $(`#bookRoom_${roomId}`).modal('show');
+
+            })
+            function initMap() {
+                const myLatLng = {
+                    lat: 25.687243,
+                    lng: 32.639637
+                };
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 4,
+                    center: myLatLng
+                });
+                new google.maps.Marker({
+                    position: myLatLng,
+                    map,
+                    title: "Hello World!"
+                });
+            }
+            initMap();
+
+        })
+    </script>
+
+
+
+
 @endsection

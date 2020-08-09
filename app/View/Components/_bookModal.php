@@ -4,16 +4,19 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class _book-modal extends Component
+class _bookModal extends Component
 {
+    public $room;
+
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param $room
      */
-    public function __construct()
+    public function __construct($room )
     {
-        //
+        $this->room = $room;
+
     }
 
     /**
