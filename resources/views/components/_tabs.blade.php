@@ -65,6 +65,8 @@
             <h4>Location on map</h4>
             <div class="">
                 <div id="map" style="height: 25rem;"></div>
+                <input  type="hidden" name="lat" id="lat" data-lat="{{$hotel->latitude}}"/>
+                <input  type="hidden" name="long" id="long" data-long="{{$hotel->longitude}}"/>
             </div>
         </div>
     </div>
@@ -112,6 +114,8 @@
 
             })
             function initMap() {
+                let lat = $(this).data('lat');
+                let long = $(this).data('long');
                 const myLatLng = {
                     lat: 25.687243,
                     lng: 32.639637

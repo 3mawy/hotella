@@ -27,7 +27,7 @@
 
 
                         <x-_hero-carousel :img1="$hotel->thumbnail_url1" :img2="$hotel->thumbnail_url2" :img3="$hotel->thumbnail_url3"></x-_hero-carousel>
-                        <x-_tabs :hotel="$hotel" :rooms="$rooms" :reviews="$reviews"></x-_tabs>
+                        <x-_tabs :hotel="$hotel" :rooms="$rooms" :reviews="$reviews" :destination="$destination"></x-_tabs>
 
 
                     </div>

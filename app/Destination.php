@@ -12,8 +12,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Destination extends Model
 {
-    protected $table = 'destinations';
-    protected $fillable = ['name',
+    public $table = 'destinations';
+    public $fillable = ['name',
         'longitude',
         'latitude',
         'zipcode',

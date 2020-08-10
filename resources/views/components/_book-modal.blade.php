@@ -50,8 +50,8 @@
                             </div>
                                 </div>
                                 <label for="address">cost <span class="text-muted"></span></label>
-                                <input value="{{$room->price}}$" type="text" name="price" id="price" readonly/>
-
+                                <input value="{{$room->price}}" type="text" name="price" id="price" readonly/>
+                                <p>$</p>
 
                                 {{--
                                                                 <h4 class="mb-3">Payment</h4>

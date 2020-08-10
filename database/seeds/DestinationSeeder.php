@@ -1,5 +1,6 @@
 <?php
 
+use App\Destination;
 use Illuminate\Database\Seeder;
 
 class DestinationSeeder extends Seeder
@@ -11,7 +12,17 @@ class DestinationSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Destination::class, 50)->create();
-        
+        $json = File::get("database/data/destinations.json");
+        $data = json_decode($json);
+        $faker = Faker\Factory::create();;
+        foreach ($data as $obj) {
+            Destination::create(array(
+                'name' => $obj->city,
+                'latitude' => $obj->lat,
+                'longitude' => $obj->lng,
+                'dummy' =>$faker->sentence(),
+                'destination_id'=>$faker->unique()->numberBetween(1,100),
+            ));
+        }
     }
 }
